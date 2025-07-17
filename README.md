@@ -34,13 +34,15 @@ kubectl delete pod -n auth -l app=dex
 **4. Install Common Services**
 Apply the base kustomize overlays for:
 
-kustomize build common/cert‑manager/cert‑manager/base | kubectl apply ‑f ‑
-kustomize build common/cert‑manager/kubeflow‑issuer/base | kubectl apply ‑f ‑
-kustomize build common/istio‑*/istio‑install/base | kubectl apply ‑f ‑
-kustomize build common/dex/base | kubectl apply ‑f ‑
-kustomize build common/oauth2‑proxy/base | kubectl apply ‑f ‑
-kustomize build common/kubeflow‑namespace/base | kubectl apply ‑f ‑
-kustomize build common/kubeflow‑roles/base | kubectl apply ‑f ‑
+```bash
+kustomize build common/cert-manager/cert-manager/base | kubectl apply -f -
+kustomize build common/cert-manager/kubeflow-issuer/base | kubectl apply -f -
+kustomize build common/istio-*/istio-install/base | kubectl apply -f -
+kustomize build common/dex/base | kubectl apply -f -
+kustomize build common/oauth2-proxy/base | kubectl apply -f -
+kustomize build common/kubeflow-namespace/base | kubectl apply -f -
+kustomize build common/kubeflow-roles/base | kubectl apply -f -
+
 
 These install CRDs (for Istio, cert-manager) and set up auth, namespaces, and RBAC.
 
