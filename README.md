@@ -42,7 +42,7 @@ kustomize build common/dex/base | kubectl apply -f -
 kustomize build common/oauth2-proxy/base | kubectl apply -f -
 kustomize build common/kubeflow-namespace/base | kubectl apply -f -
 kustomize build common/kubeflow-roles/base | kubectl apply -f -
-
+```
 
 These install CRDs (for Istio, cert-manager) and set up auth, namespaces, and RBAC.
 
