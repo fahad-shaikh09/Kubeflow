@@ -49,10 +49,12 @@ These install CRDs (for Istio, cert-manager) and set up auth, namespaces, and RB
 **5. Launch Kubeflow Stack**
 With core services healthy (kubectl get pods -A), deploy all components:
 
+```bash
 while ! kustomize build example | kubectl apply -f -; do
   echo "Retrying…"
   sleep 20
 done
+```
 
 This retries until all CRDs/resources apply cleanly—especially useful for handling timing/order issues. 
 
@@ -92,13 +94,16 @@ Serve models using KServe InferenceService CRDs
 
 # ✅ Summary of Commands
 
+```bash
 minikube start --cpus=8 --memory=20000
 git clone https://github.com/kubeflow/manifests.git && cd manifests
+```
 
 (Optional) Update Dex password
 kubectl delete/create secret steps...
 
 ## Install core services
+```bash
 kustomize build common/cert-manager/cert-manager/base | kubectl apply -f -
 kustomize build common/cert-manager/kubeflow-issuer/base | kubectl apply -f -
 kustomize build common/istio-*/istio-install/base | kubectl apply -f -
@@ -106,13 +111,15 @@ kustomize build common/dex/base | kubectl apply -f -
 kustomize build common/oauth2-proxy/base | kubectl apply -f -
 kustomize build common/kubeflow-namespace/base | kubectl apply -f -
 kustomize build common/kubeflow-roles/base | kubectl apply -f -
-
+```
 
 ## Deploy Kubeflow
+```bash
 while ! kustomize build example | kubectl apply -f -; do
   echo "Retrying apply…"
   sleep 20
 done
+```
 
 kubectl get pods -A
 
